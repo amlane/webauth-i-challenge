@@ -1,8 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-//import bcryptjs
-const bcrypt = require('bcryptjs');
 
 const usersRouter = require('../users/users-router.js');
 const authRouter = require('../auth/auth-router.js');
