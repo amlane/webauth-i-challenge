@@ -7,7 +7,7 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const registerNewUser = creds => dispatch => {
     dispatch({ type: REGISTER_START })
     return axios 
-    .post(`https://web17-artfolio.herokuapp.com/api/account/register`, creds)
+    .post(`http://localhost:5175/api/auth/register`, creds)
     .then(res => {
         console.log("response1:", res)
         localStorage.setItem(
@@ -28,7 +28,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const loginUser = creds => dispatch => {
     dispatch({ type: LOGIN_START })
     return axios
-    .post(`https://web17-artfolio.herokuapp.com/api/account/login`, creds)
+    .post(`http://localhost:5175/api/auth/login`, creds)
     .then(res => {
         console.log("response2:", res)
         localStorage.setItem(
