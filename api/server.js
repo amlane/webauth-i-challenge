@@ -4,8 +4,11 @@ const cors = require('cors');
 const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session);
 
+const restricted = require('../auth/restricted.js');
+
 const usersRouter = require('../users/users-router.js');
 const authRouter = require('../auth/auth-router.js');
+const restrictedRouter = require('../auth/restricted-router.js');
 
 const server = express();
 
@@ -34,6 +37,7 @@ server.use(cors());  // connect your react app with CORS middleware
 server.use(session(sessionConfig)); // use express session and sessionConfig object
 server.use('/api/users', usersRouter);  
 server.use('/api/auth', authRouter);
+server.use('/api/restricted', restricted, restrictedRouter);
 
 
 server.get('/', (req, res) => {
