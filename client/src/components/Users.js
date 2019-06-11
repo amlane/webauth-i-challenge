@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-
 class Users extends React.Component{
     state = {
         users: []
@@ -22,6 +21,7 @@ class Users extends React.Component{
     }
 
     render(){
+        console.log('CDM')
         return (
             <>
             <div>{this.state.users.map( user => {
