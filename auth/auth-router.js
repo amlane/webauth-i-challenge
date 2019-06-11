@@ -20,14 +20,15 @@ router.post('/register', (req, res) => {
       });
   });
   
-  router.post('/login', restricted, (req, res) => {
+  router.post('/login', (req, res) => {
     let { username, password } = req.body;
    
     Users.findBy({ username })
       .first()
       .then(user => {
-          if (user) {
-          res.status(200).json({ message: `Welcome ${user.username}!` });
+          if (user && bcrypt.compareSync(password, user.password)) {
+          req.session.username = user.username;
+          res.status(200).json({ message: `Welcome ${user.username}, you have a cookie!` });
         } else {
           res.status(401).json({ message: 'You shall not pass!' });
         }
