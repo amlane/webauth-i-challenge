@@ -38,4 +38,11 @@ router.post('/register', (req, res) => {
       });
   });
 
+  router.delete('/', (req, res) => {
+    if(req.session) {
+      req.session.destroy();
+      res.status(200).json({ message: "You are logged out!" })
+    }
+  });
+
 module.exports = router;
